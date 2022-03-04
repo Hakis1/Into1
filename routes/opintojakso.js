@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const borrower = require('../models/borrower_model');
+const Opintojakso = require('../models/opintojakso_model');
 
 router.get('/:id?',
  function(request, response) {
   if (request.params.id) {
-    borrower.getById(request.params.id, function(err, dbResult) {
+    Opintojakso.getById(request.params.id, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
@@ -13,7 +13,7 @@ router.get('/:id?',
       }
     });
   } else {
-    borrower.getAll(function(err, dbResult) {
+    Opintojakso.getAll(function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
@@ -26,7 +26,7 @@ router.get('/:id?',
 
 router.post('/', 
 function(request, response) {
-  borrower.add(request.body, function(err, dbResult) {
+  Opintojakso.add(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
@@ -38,7 +38,7 @@ function(request, response) {
 
 router.delete('/:id', 
 function(request, response) {
-  borrower.delete(request.params.id, function(err, dbResult) {
+  Opintojakso.delete(request.params.id, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
@@ -50,7 +50,7 @@ function(request, response) {
 
 router.put('/:id', 
 function(request, response) {
-  borrower.update(request.params.id, request.body, function(err, dbResult) {
+  Opintojakso.update(request.params.id, request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {

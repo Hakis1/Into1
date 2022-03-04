@@ -5,8 +5,11 @@ var logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const bookRouter = require('./routes/book');
-const borrowerRouter = require('./routes/borrower');
+
+//app.use('/opiskelija', opiskelijaRouter);
+const opiskelijaRouter = require('./routes/opiskelija');
+const opintojaksoRouter = require('./routes/opintojakso');
+const arviointiRouter = require('./routes/arviointi');
 const userRouter = require('./routes/user');
 const basicAuth = require('express-basic-auth');
 
@@ -21,8 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(cors());
 
-app.use('/book', bookRouter);
-app.use('/borrower', borrowerRouter);
+app.use('/opiskelija', opiskelijaRouter);
+app.use('/opintojakso', opintojaksoRouter);
+app.use('/arviointi', arviointiRouter);
 app.use('/user', userRouter);
 
 
